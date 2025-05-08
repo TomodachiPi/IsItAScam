@@ -1,38 +1,49 @@
 // Get Element IDs
 var take_test_one_pointer = document.getElementById("take-a-test-1");
 var take_test_two_pointer = document.getElementById("take-a-test-2");
+var take_test_three_pointer = document.getElementById("take-a-test-3");
 
 var category_one_description_section_pointer = document.getElementById("category-1-description-section");
 var category_two_description_section_pointer = document.getElementById("category-2-description-section");
+var category_three_description_section_pointer = document.getElementById("category-3-description-section");
 
 var questionnaire_one_pointer = document.getElementById("questionnaire-1");
 var questionnaire_two_pointer = document.getElementById("questionnaire-2");
+var questionnaire_three_pointer = document.getElementById("questionnaire-3");
 
 var rating_one_pointer = document.getElementById("rating-one");
 var rating_two_pointer = document.getElementById("rating-two");
+var rating_three_pointer = document.getElementById("rating-three");
 
 var rating_scale_one_pointer = document.getElementById("rating-scale-1");
 var rating_scale_two_pointer = document.getElementById("rating-scale-2");
+var rating_scale_three_pointer = document.getElementById("rating-scale-3");
 
 var rating_comment_one_pointer = document.getElementById("rating-comment-1");
 var rating_comment_two_pointer = document.getElementById("rating-comment-2");
+var rating_comment_three_pointer = document.getElementById("rating-comment-3");
 
 var rating_description_one_pointer = document.getElementById("rating-description-1");
 var rating_description_two_pointer = document.getElementById("rating-description-2");
+var rating_description_three_pointer = document.getElementById("rating-description-3");
 
 
 var question_one_pointer = document.getElementById("question-1");
 var question_two_pointer = document.getElementById("question-2");
+var question_three_pointer = document.getElementById("question-3");
 
 var answer_1_1_pointer = document.getElementById("answer-1-1");
 var answer_2_1_pointer = document.getElementById("answer-2-1");
+var answer_3_1_pointer = document.getElementById("answer-3-1");
 
 var answer_1_2_pointer = document.getElementById("answer-1-2");
 var answer_2_2_pointer = document.getElementById("answer-2-2");
+var answer_3_2_pointer = document.getElementById("answer-3-2");
 
 
 var return_to_description_one_button_pointer = document.getElementById("return-to-description-one-button");
 var return_to_description_two_button_pointer = document.getElementById("return-to-description-two-button");
+var return_to_description_three_button_pointer = document.getElementById("return-to-description-three-button");
 
 // Initialize important variables
 
@@ -55,6 +66,9 @@ answer_1_2_pointer.addEventListener("click", () => {advanceQuestion(1)});
 
 answer_2_1_pointer.addEventListener("click", () => {advanceQuestion(0)});
 answer_2_2_pointer.addEventListener("click", () => {advanceQuestion(1)});
+
+answer_3_1_pointer.addEventListener("click", () => {advanceQuestion(0)});
+answer_3_2_pointer.addEventListener("click", () => {advanceQuestion(1)});
 
 
 // Allow for scrolling through categories
@@ -150,6 +164,19 @@ take_test_two_pointer.addEventListener("click", () => {
     }
 })
 
+take_test_three_pointer.addEventListener("click", () => {
+    if(current_category_selected == 2){
+        current_question_set = 2;
+        
+        category_three_description_section_pointer.style.display = "none"; // Hide Description Section
+        questionnaire_three_pointer.style.display = "block"; // Show Question Section
+
+        startQuestionSet();
+
+        currently_taking_a_test = true;
+    }
+})
+
 
 
 return_to_description_one_button_pointer.addEventListener("click", () => {
@@ -162,6 +189,13 @@ return_to_description_one_button_pointer.addEventListener("click", () => {
 return_to_description_two_button_pointer.addEventListener("click", () => {
     category_two_description_section_pointer.style.display = "block"; // Show Description Section
     rating_two_pointer.style.display = "none"; // Hide Rating Section
+
+    currently_taking_a_test = false;
+})
+
+return_to_description_three_button_pointer.addEventListener("click", () => {
+    category_three_description_section_pointer.style.display = "block"; // Show Description Section
+    rating_three_pointer.style.display = "none"; // Hide Rating Section
 
     currently_taking_a_test = false;
 })
@@ -197,6 +231,8 @@ function replaceQuestions(){
         question_one_pointer.innerHTML = `${current_question_counter + 1}. ${questions[current_question_set][current_question_counter]}`;
     } else if(current_question_set == 1){
         question_two_pointer.innerHTML = `${current_question_counter + 1}. ${questions[current_question_set][current_question_counter]}`;
+    } else if(current_question_set == 2){
+        question_three_pointer.innerHTML = `${current_question_counter + 1}. ${questions[current_question_set][current_question_counter]}`;
     }
     
 }
@@ -234,6 +270,19 @@ function finishQuestionSet(){
         }
         
         rating_two_pointer.style.display = "block"; // Show Rating Section
+    } else if(current_question_set == 2){
+        questionnaire_three_pointer.style.display = "none"; // Hide Question Section
+        
+        rating_scale_three_pointer.innerHTML = `${rating} / 5`;
+        if(rating_integer == 0){
+            rating_comment_three_pointer.innerHTML = `${rating_comments[current_question_set][rating_integer]}`;
+            rating_description_three_pointer.innerHTML = `${rating_descriptions[current_question_set][rating_integer]}`;
+        } else {
+            rating_comment_three_pointer.innerHTML = `${rating_comments[current_question_set][rating_integer - 1]}`;
+            rating_description_three_pointer.innerHTML = `${rating_descriptions[current_question_set][rating_integer - 1]}`;
+        }
+        
+        rating_three_pointer.style.display = "block"; // Show Rating Section
     }
 }
 

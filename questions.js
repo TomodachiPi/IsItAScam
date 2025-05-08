@@ -1,5 +1,25 @@
 var questions = [
-    [],
+    ["May job posting ba sa Facebook, WhatsApp, o random website na hindi naman kilala bilang job hiring platform?",
+     "Humihingi ba ng mga 'processing' o 'training' fee ang employer?",
+     "Malinaw ba ang job description sa ina-applyan mo na trabaho?",
+    "Nagpapakilala ba ang employer at may maayos ba silang contact details?",
+    "Ipinaliwanag ba nila ang magiging sahod mo?",
+    "Meron ba silang opisyal na hiring center o online verified na video conferencing app?",
+    "Sinasabing urgent at dapat kang mag-decide agad para makuha ang trabaho?",
+    "May pinapapirmahan ba silang kontrata bago ka magsimula?",
+    "Maraming positive ba na sinasabi ang mga tao sa kumpanyang ina-applyan mo?",
+    "Sa official website o verified job portal mo ba nalaman ang job posting?"],
+    ["May lumabas bang pop-up ad na nagsasabing “Congratulations! Ikaw ang nanalo”?",
+    "Ang link ba ng website may kakaibang spelling, katulad ng 'fácebook.com' o 'amaz0n.net'?",
+    "Nagpa-pop up ba ang babala na may virus ang device mo at kailangan mong i-click para maayos?",
+    "Hiniling ba ng website ang personal information mo kahit hindi naman kailangan? (e.g., full name, address, credit card details)?",
+    "Kapag nag-click ka sa isang link, napunta ka ba sa ibang website na hindi mo inaasahan?",
+    "Ang itsura ba ng website puno ng mga pop-ups, flashy banners, ads at may mga typos at maling grammar?",
+    "Kung sinusubukan mo na umalis sa website, may nagpapakita bang pop-up na pinipilit kang ibalik sa website?",
+    "Nag-aalok ba ang website ng sobrang magandang deal (Katulad ng 90% discount sa bagong Iphone)?",
+    "Sinabi ba ng website na nanalo ka ng premyo pero kailangan mong magbayad ng 'shipping fee' o maglagay ng credit card info?",
+    "Positibo ba ang sinasabi ng mga tao tungkol sa website na ito?"
+    ],
     ["Humihingi ba ng OTP o verification code ang tumawag/text sa'yo?", 
      "May pinapadalang link sa text o email at sinasabing kailangan mong i-click ito para ayusin ang account mo?",
      "Sinabi ba ng tumawag na may problema sa bank account mo, pero hindi mo naman sila kinontak",
@@ -14,9 +34,98 @@ var questions = [
 ]
 
 var choice_weights = [
-    [],
-    [[5, // Oo
+  [[0, // Oo
+    5  // Hindi
+  ],[
+      5, // Oo
       0  // Hindi
+  ],[
+      0, // Oo
+      5  // Hindi
+  ],[
+      0, // Oo
+      5  // Hindi
+  ],[
+      0, // Oo
+      5  // Hindi
+  ],[
+      0, // Oo
+      5  // Hindi
+  ],[
+      5, // Oo
+      0  // Hindi
+  ],[
+      0, // Oo
+      5  // Hindi
+  ],[
+      0, // Oo
+      5  // Hindi
+  ],[
+      0, // Oo
+      5  // Hindi
+  ]],
+   [[5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        0, // Oo
+        5  // Hindi
+    ]],
+    [[5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        0, // Oo
+        5  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        5, // Oo
+        0  // Hindi
+    ],[
+        0, // Oo
+        5  // Hindi
+    ]],
+      [[5, // Oo
+        0  // Hindi
     ],[
         5, // Oo
         0  // Hindi
@@ -48,31 +157,55 @@ var choice_weights = [
 ]
 
 var rating_comments = [
+    ["Mukhang Safe, Pero Mag-ingat Pa Rin. Huwag basta-basta magbigay ng impormasyon.",
+     "Mukhang Safe, Pero Mag-ingat Pa Rin. Huwag basta-basta magbigay ng impormasyon.",
+     "Duda Pero Puwedeng Legit. Hanapin pa ang company background bago mag-apply. ",
+     "Mataas ang Panganib! Mag-research pa bago magtiwala. ",
+     "SCAM Alert! Huwag mag-apply, i-block ang recruiter, at i-report ang job post. "
+    ],
+    ["Mukhang Safe, Pero Mag-ingat Pa Rin. Huwag basta-basta magbigay ng impormasyon.",
+     "Mukhang Safe, Pero Mag-ingat Pa Rin. Huwag basta-basta magbigay ng impormasyon.",
+     "May Dapat Pang I-check. Maghanap pa ng ibang proof bago magtiwala.",
+     "Mataas ang Panganib! Mag-ingat at huwag mag-click ng kahit anong kahina-hinalang link. ",
+     "SCAM Alert! Huwag maglagay ng kahit anong impormasyon at umalis agad sa website."
+    ],
+    ["Mukhang Safe, Pero Mag-inat Pa Rin. Huwag basta-basta magbigay ng impormasyon.",
+     "Mukhang Safe, Pero Mag-inat Pa Rin. Huwag basta-basta magbigay ng impormasyon.",
+     "May Dapat Pang I-check. Baka ito ay isang call/SMS scam",
+     "Mataas ang Panganib! Mag-ingat at huwag magbigay ng personal na impormasyon",
+     "SCAM Alert! Huwag magbigay ng anumang impormasyon"
+    ],
     ["It is definitely not a deepfake",
      "It might probably be a deepfake",
      "Take caution, it might be a deepfake",
      "Most probably a deepfake",
      "It is definitely a deepfake"
-    ],
-    ["It is definitely not a call/SMS scam",
-     "It might probably be a call/SMS scam",
-     "Take caution, it might be a call/SMS scam",
-     "Most probably a call/SMS scam",
-     "It is definitely a call/SMS scam"
     ]
 ]
 
 var rating_descriptions = [
-    ["This appears to be authentic, with no clear signs of manipulation. However, verifying the source is always a good practice before sharing information.",
-     "It seems genuine, but minor alterations can be difficult to detect. Cross-referencing with original sources can help confirm its authenticity.",
-     "Exercise caution—certain elements, such as slight distortions or unnatural movements, suggest possible manipulation. Verifying through multiple reliable sources is recommended.",
-     "This is likely a deepfake, as there are noticeable inconsistencies in facial expressions, voice patterns, or lighting. It is advisable to fact-check before drawing conclusions.",
-     "This is almost certainly a deepfake, showing clear signs of AI-generated manipulation. Rely on credible sources to verify its legitimacy before accepting it as real."
-    ],
-    ["This appears to be a legitimate call or message with no signs of fraud. The sender or caller is recognizable, and the content aligns with previous legitimate communications. However, verifying the source is always a good practice before responding.",
-     "This seems genuine, but some aspects could be worth verifying. If the message requests personal information or urgent action, confirm its legitimacy through official channels. When in doubt, contact the organization directly using a trusted number.",
-     "Exercise caution—certain elements suggest this could be a scam. Look for red flags such as unknown senders, unexpected requests, or unusual urgency. Avoid clicking links or sharing personal details until verification is complete.",
-     "This is likely a scam, as there are multiple warning signs. Legitimate organizations typically do not ask for sensitive information through calls or SMS. It is best to ignore the message and report it if necessary.",
-     "This is almost certainly a scam, as it exhibits clear fraudulent characteristics, such as impersonating a bank, government agency, or trusted company. Do not respond, click any links, or provide any information. Block the number and report the scam to the appropriate authorities."
-    ]
+    ["",
+    "",
+    "",
+    "",
+    ""
+   ],
+   ["",
+   "",
+   "",
+   "",
+   ""
+   ],
+   ["",
+   "",
+   "",
+   "",
+   ""
+   ],
+   ["",
+    "",
+    "",
+    "",
+    ""
+   ],
 ]
